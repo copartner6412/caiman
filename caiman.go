@@ -355,7 +355,7 @@ func WithDelay(delay time.Duration) CryptOption {
 
 }
 
-func WithMasterKeyAlgorithm(algorithm AES) CryptOption {
+func WithMasterKeyEncryptionAlgorithm(algorithm AES) CryptOption {
 	return func(cs *cryptSettings) {
 		cs.encryptionAlgorithm = algorithm
 	}
