@@ -255,7 +255,6 @@ type cryptSettings struct {
 	delay               time.Duration
 	encryptionAlgorithm AES
 	saltLength          int
-	keySlotNumber       int
 	prompts             Prompts
 	passwordPolicy      PasswordPolicy
 }
@@ -330,7 +329,6 @@ var defaultCryptSettings *cryptSettings = &cryptSettings{
 	delay:               1,
 	encryptionAlgorithm: AES256,
 	saltLength:          16,
-	keySlotNumber:       8,
 	prompts: Prompts{
 		SetPassword1:   "Enter new password: ",
 		SetPassword2:   "Confirm password: ",
@@ -366,12 +364,6 @@ func WithMasterKeyAlgorithm(algorithm AES) CryptOption {
 func WithSaltLength(length int) CryptOption {
 	return func(cs *cryptSettings) {
 		cs.saltLength = length
-	}
-}
-
-func WithKeySlotNumber(number int) CryptOption {
-	return func(cs *cryptSettings) {
-		cs.keySlotNumber = number
 	}
 }
 
